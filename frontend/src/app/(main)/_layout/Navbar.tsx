@@ -1,6 +1,8 @@
 "use client";
 
 import { PhoneCall } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navBars = [
   {
@@ -15,7 +17,7 @@ const navBars = [
   },
   {
     title: "Find Candidate",
-    path: "/candidates",
+    path: "/candidate",
     role: "employers",
   },
   {
@@ -37,19 +39,33 @@ const navBars = [
 
 export default function Navbar() {
   const role = "employers";
+  const pathname = usePathname();
   return (
-    <nav className="w-full h-12 flex items-center bg-gray-50">
+    <nav className="w-full h-12 flex items-end bg-gray-50">
       <div className="container flex justify-between items-center">
-        <ul className="flex gap-2">
-          {navBars.map((item, index) => (
-            <>{item.role === role && <li key={index}>{item.title}</li>}</>
-          ))}
+        <ul className="flex gap-5">
+          {navBars
+            .filter((item) => item.role === "" || item.role === role)
+            .map((item, index) => {
+              const isActive =
+                pathname === item.path || pathname.startsWith(`${item.path}/`);
+              return (
+                <Link
+                  href={item.path}
+                  key={index}
+                  className={`${
+                    isActive
+                      ? "border-b-2 border-blue-500 text-blue-500 pb-2"
+                      : "text-gray-700"
+                  } hover:text-blue-500`}
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
         </ul>
         <div className="md:flex gap-2 hidden">
-          <p className="flex gap-2 items-center">
-            <PhoneCall className="size-5" /> 023849299837
-          </p>
-          <p>country</p>
+          <p className="font-semibold pb-2">Indonesia</p>
         </div>
       </div>
     </nav>

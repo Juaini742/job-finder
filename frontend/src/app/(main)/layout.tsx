@@ -13,7 +13,7 @@ export default function MainLayout({
       <Navbar />
       <main>
         <Header />
-        {children}
+        <div className="container">{children}</div>
       </main>
     </ScrollArea>
   );

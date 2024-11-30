@@ -21,8 +21,14 @@ import java.util.Collections;
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
+
+    @Column(name = "full_name")
+    private String fullName;
+
     private String email;
+
     private String password;
+
     private String phone;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -63,7 +69,18 @@ public class User extends BaseEntity implements UserDetails {
         return UserDetails.super.isEnabled();
     }
 
-    enum Role_User {
-        JOB_SEEKER, RECRUITER
+    public enum Role_User {
+        JOB_SEEKER, RECRUITER;
+
+        public static Role_User fromString(String role) {
+            for (Role_User role_user : Role_User.values()) {
+                if (role_user.name().equalsIgnoreCase(role)) {
+                    return role_user;
+                }
+            }
+            throw new IllegalArgumentException("Invalid role: " + role);
+        }
+
+
     }
 }
