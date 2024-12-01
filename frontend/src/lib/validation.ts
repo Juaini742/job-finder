@@ -5,6 +5,9 @@ const stringOptional = z.string().optional();
 
 export const SignUpShema = z.object({
   fullName: requiredString,
+  phone: z
+    .string()
+    .regex(/^\+?[0-9\s-]+$/, { message: "Phone number must be valid" }),
   email: requiredString.email(),
   password: z
     .string()

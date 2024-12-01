@@ -5,6 +5,8 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
@@ -14,8 +16,7 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-
-    public String extractUserId(String token) {
+    public String extractUserEmail(String token) {
         return extractClams(token, Claims::getSubject);
     }
 
@@ -34,7 +35,7 @@ public class JwtService {
 
     public String generateToken(User user) {
         return Jwts.builder()
-                .subject(String.valueOf(user.getId()))
+                .subject(String.valueOf(user.getEmail()))
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 7)) // 1 week
                 .claim("role", user.getRole().name())
@@ -44,8 +45,8 @@ public class JwtService {
     }
 
     public boolean isTokenValid(String token, User user) {
-        final String userId = extractUserId(token);
-        return (userId.equals(user.getId())) && !expiredToken(token);
+        final String userEmail = extractUserEmail(token);
+        return (userEmail.equals(user.getEmail())) && !expiredToken(token);
     }
 
     public String extractTokenFromBearer(String bearerToken) {

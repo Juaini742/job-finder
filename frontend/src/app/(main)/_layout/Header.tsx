@@ -1,8 +1,9 @@
 import AppLogo from "@/components/AppLogo";
-import { Button } from "@/components/ui/button";
+
 import { Card } from "@/components/ui/card";
-import { BriefcaseBusiness, SearchIcon } from "lucide-react";
-import Link from "next/link";
+import { SearchIcon } from "lucide-react";
+
+import ButtonCondition from "./button-condition";
 
 export default function Header() {
   return (
@@ -21,14 +22,8 @@ export default function Header() {
                 />
               </div>
             </div>
-            <div className="flex gap-2 items-center">
-              <Link href="/sign-up">
-                <Button variant="outline">Sign Up</Button>
-              </Link>
-              <Link href="/sign-in">
-                <Button>Sign In</Button>
-              </Link>
-            </div>
+
+            <ButtonCondition />
           </Card>
         </div>
       </div>

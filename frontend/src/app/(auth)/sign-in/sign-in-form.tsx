@@ -17,8 +17,12 @@ import FbImg from "Img/fb.png";
 import GoogleImg from "Img/g.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
+import { useSignInMutation } from "@/store/slices/useUserSlice";
 
 export default function SignInForm() {
+  const { toast } = useToast();
+  const [signIn, { isLoading }] = useSignInMutation();
   const form = useForm<SignInValeus>({
     resolver: zodResolver(SignInShema),
     defaultValues: {
@@ -27,11 +31,37 @@ export default function SignInForm() {
     },
   });
 
+  const onSubmit = async (data: SignInValeus) => {
+    try {
+      await signIn(data).then(() => {
+        form.reset();
+        toast({
+          title: "Sign in success",
+          description: "You can now access your account",
+        });
+        window.location.reload();
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Sign in Failure",
+        description: "There was an error, please try again",
+      });
+    }
+  };
+
+  // const { data } = useGetUserQuery();
+  // console.log(data);
+
   return (
     <div>
       <h3 className="mt-10 text-xl text-center">Sign In Form</h3>
       <Form {...form}>
-        <form className="flex flex-col gap-4">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-4"
+        >
           <FormField
             control={form.control}
             name="email"
@@ -64,7 +94,7 @@ export default function SignInForm() {
               click here to sign up
             </Link>
           </div>
-          <Button>Sign In</Button>
+          <Button disabled={isLoading}>Sign In</Button>
         </form>
       </Form>
       <div className="flex items-center gap-4 mt-5">

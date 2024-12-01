@@ -8,8 +8,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.SimpleTimeZone;
 
 @RequiredArgsConstructor
 @Service
@@ -53,7 +56,8 @@ public class AuthService {
 
         User user = (User) auth.getPrincipal();
         String token = new JwtService().generateToken(user);
-        return new AuthResponse(user.getId(),
+        return new AuthResponse(
+                user.getId(),
                 user.getFullName(),
                 user.getEmail(),
                 user.getRole().name(),
@@ -61,4 +65,17 @@ public class AuthService {
         );
     }
 
+    public String getCurrentUserEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return authentication.getName();
+        }
+        return null;
+    }
+
+    public User getCurrentUser() {
+        String email = getCurrentUserEmail();
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
 }

@@ -17,23 +17,52 @@ import FbImg from "Img/fb.png";
 import GoogleImg from "Img/g.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useSignUpMutation } from "@/store/slices/useUserSlice";
+import { useToast } from "@/hooks/use-toast";
 
 export default function CandidateForm() {
+  const { toast } = useToast();
+  const [signUp, { isLoading }] = useSignUpMutation();
+
   const form = useForm<SignUpValeus>({
     resolver: zodResolver(SignUpShema),
     defaultValues: {
       fullName: "",
+      phone: "",
       email: "",
       password: "",
-      role: "CANDIDATE",
+      role: "JOB_SEEKER",
     },
   });
+
+  const onSubmit = async (data: SignUpValeus) => {
+    try {
+      await signUp(data).then(() => {
+        form.reset();
+        toast({
+          title: "Sign Up success",
+          description: "You can now access your account",
+        });
+        window.location.reload();
+      });
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Registration Failed",
+        description: "There is something wrong, Please try again",
+      });
+    }
+  };
 
   return (
     <div>
       <h3 className="mt-10 text-xl text-center">Candidate Form</h3>
       <Form {...form}>
-        <form className="flex flex-col gap-4">
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-4"
+        >
           <FormField
             control={form.control}
             name="fullName"
@@ -42,6 +71,19 @@ export default function CandidateForm() {
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
                   <Input {...field} placeholder="Full Name" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="Enter phone number" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -79,7 +121,7 @@ export default function CandidateForm() {
               click here to sign in
             </Link>
           </div>
-          <Button>Sign Up Candidate</Button>
+          <Button disabled={isLoading}>Sign Up Candidate</Button>
         </form>
       </Form>
       <div className="flex items-center gap-4 mt-5">

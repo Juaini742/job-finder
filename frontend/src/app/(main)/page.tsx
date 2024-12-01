@@ -25,8 +25,10 @@ const cards = [
     name: "New Job",
   },
 ];
-
-export default function Home() {
+export default async function Home() {
+  // const store = makeStore();
+  // const result = await store.dispatch(userApi.endpoints.getUser.initiate());
+  // console.log("RESULT ", result);
   return (
     <>
       <div className="container">

@@ -60,10 +60,10 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
 
-        String userId = jwtService.extractUserId(token);
+        String userEmail = jwtService.extractUserEmail(token);
 
-        if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            User user = userRepository.findById(userId)
+        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            User user = userRepository.findByEmail(userEmail)
                     .orElseThrow(() -> new RuntimeException("User not found"));
 
             if (jwtService.isTokenValid(token, user)) {

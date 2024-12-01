@@ -3,7 +3,7 @@ import MeetingImage from "Img/meet.jpg";
 import SignInForm from "./sign-in-form";
 import AppLogo from "@/components/AppLogo";
 
-export default function page() {
+export default async function Page() {
   return (
     <div className="flex justify-between items-center gap-10">
       <div className="w-full md:w-[60rem] lg:w-[70rem] flex flex-col border p-5 pt-10 rounded">

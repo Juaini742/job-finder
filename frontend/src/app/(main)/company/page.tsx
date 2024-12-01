@@ -1,4 +1,4 @@
-import CompantForm from "./compant-form";
+import CompantForm from "./company-form";
 
 export default function page() {
   return (
