@@ -18,6 +18,12 @@ public class JobController {
 
     private final JobService jobService;
 
+    @GetMapping("{id}")
+    public ResponseEntity<?> getJobById(@PathVariable String id) {
+        JobResponse job = jobService.findJobById(id);
+        return GlobalResponse.buildResponse(HttpStatus.OK, "Jobs fetched successfully", job);
+    }
+
     @GetMapping
     public ResponseEntity<?> getAllJobs() {
         List<JobResponse> jobs = jobService.findAllJobByUserId();

@@ -32,6 +32,4 @@ public class SocialMediaCompany extends BaseEntity {
     private SocialMedia socialMedia;
 
     private String url;
-
-
 }

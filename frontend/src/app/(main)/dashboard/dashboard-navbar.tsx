@@ -2,6 +2,7 @@
 
 import {
   Briefcase,
+  Building,
   ChevronLeft,
   ChevronRight,
   Home,
@@ -13,12 +14,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navItems = [
-  { title: "Dashboard", path: "/dashboard", icon: Home },
+  { title: "Overview", path: "/dashboard", icon: Home },
   {
     title: "Profile",
-    path: "/dashboard/employers-profile",
+    path: "/dashboard/profile",
     icon: User,
   },
+  { title: "Company", path: "/dashboard/company", icon: Building },
   { title: "Job List", path: "/dashboard/job-list", icon: Briefcase },
   { title: "Post Job", path: "/dashboard/post-job", icon: PlusCircle },
 ];
@@ -65,14 +67,11 @@ export default function DashboardNavbar() {
               href={item.path}
               className={`hover:bg-blue-50 transition-all duration-300 flex items-center gap-4 px-4 py-3  ${
                 isMinimized ? "justify-center" : ""
-              } ${isActive ? "bg-blue-50 border-l-2 border-blue-500" : ""}`}
+              } ${isActive ? "bg-indigo-50 border-l-2 border-primary" : ""}`}
             >
-              <item.icon
-                size={20}
-                className={isActive ? "text-blue-500" : ""}
-              />
+              <item.icon size={20} className={isActive ? "text-primary" : ""} />
               {!isMinimized && (
-                <span className={`${isActive ? "text-blue-500" : ""} `}>
+                <span className={`${isActive ? "text-primary" : ""} `}>
                   {item.title}
                 </span>
               )}

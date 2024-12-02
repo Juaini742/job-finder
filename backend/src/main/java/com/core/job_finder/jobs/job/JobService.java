@@ -21,12 +21,17 @@ public class JobService {
     private final TagRepository tagRepository;
     private final JobBenefitRepository jobBenefitRepository;
 
+    public JobResponse findJobById(String id){
+        Job job = jobRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Job not found"));
+        return toJobResponse(job);
+    }
+
     public List<JobResponse> findAllJobByUserId() {
         User user = authService.getCurrentUser();
         List<Job> jobs = jobRepository.findAllByRecruiterId(user.getId());
 
         if (jobs.isEmpty()) {
-//            throw new RuntimeException("You don't have any job");
             return List.of();
         }
 

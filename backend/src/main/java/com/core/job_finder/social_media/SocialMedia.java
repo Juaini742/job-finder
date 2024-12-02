@@ -18,7 +18,5 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @Table(name = "social_media_platforms")
 public class SocialMedia extends BaseEntity {
-
     private String name;
-
 }

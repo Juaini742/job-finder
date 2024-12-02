@@ -1,6 +1,7 @@
 package com.core.job_finder.user;
 
 
+import com.core.job_finder.helper.CookieHelper;
 import com.core.job_finder.helper.GlobalResponse;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,13 +40,7 @@ public class UserController {
                     .filter(data -> data.getName().equals("access_token")).findFirst();
 
             if (cookie.isPresent()) {
-                Cookie token = cookie.get();
-                token.setMaxAge(0);
-                token.setPath("/");
-                token.setHttpOnly(true);
-                token.setSecure(true);
-                token.setDomain("localhost");
-                response.addCookie(token);
+                CookieHelper.deleteCookie(response, "access_token");
                 SecurityContextHolder.clearContext();
                 return ResponseEntity.ok("Logged out successfully");
             }

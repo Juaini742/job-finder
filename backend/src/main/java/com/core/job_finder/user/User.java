@@ -2,6 +2,7 @@ package com.core.job_finder.user;
 
 import com.core.job_finder.base_enrity.BaseEntity;
 import com.core.job_finder.companies.company.Company;
+import com.core.job_finder.cv.Cv;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,6 +36,11 @@ public class User extends BaseEntity implements UserDetails {
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     @JsonIgnore
     private Company company;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Cv cv;
+
 
     @Enumerated(EnumType.STRING)
     private Role_User role;

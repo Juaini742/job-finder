@@ -10,14 +10,14 @@ import Link from "next/link";
 
 export default function ButtonCondition() {
   const { data } = useGetUserQuery();
-
   const [logout, { isLoading: logoutLoading }] = useLogoutMutation();
-
-  console.log(data);
 
   const onLogout = async () => {
     try {
-      await logout(null).then(() => window.location.reload());
+      const res = await logout(null);
+      if (res.data === undefined) {
+        window.location.reload();
+      }
     } catch (error) {
       console.error(error);
     }

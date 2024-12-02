@@ -1,7 +1,7 @@
 package com.core.job_finder.config;
 
 import com.core.job_finder.user.UserRepository;
-import org.springframework.boot.autoconfigure.session.DefaultCookieSerializerCustomizer;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -74,4 +74,9 @@ public class AppConfig {
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
+//
+//    @Bean
+//    public ObjectMapper objectMapper() {
+//        return new ObjectMapper();
+//    }
 }

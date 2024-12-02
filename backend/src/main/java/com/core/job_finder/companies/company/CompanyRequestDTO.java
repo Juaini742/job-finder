@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Map;
+
 
 @Data
 @AllArgsConstructor
@@ -44,4 +47,6 @@ public class CompanyRequestDTO {
 
     @Email(message = "Email must be a valid email address")
     private String email;
+
+    List<Map<String, String>> socialMedia;
 }

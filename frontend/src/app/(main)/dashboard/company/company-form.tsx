@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import ButtonWithLoading from "@/components/ButtonWithLoading";
 import {
   Form,
   FormControl,
@@ -17,7 +17,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
 import { CompanySchema, CompanyValues } from "@/lib/validation";
+import { useAddCompanyMutation } from "@/store/slices/useCompanySlice";
+import { useGetUserQuery } from "@/store/slices/useUserSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { useForm } from "react-hook-form";
@@ -25,20 +28,30 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 export default function CompantForm() {
+  const { toast } = useToast();
+  const { data: user } = useGetUserQuery();
+  const company = user?.data.company;
+  const [addCompany, { isLoading }] = useAddCompanyMutation();
   const form = useForm<CompanyValues>({
     resolver: zodResolver(CompanySchema),
     defaultValues: {
-      name: "",
-      description: "",
-      location: "",
-      industry: "",
-      logo_url: "",
-      founded_in: new Date(),
-      organization_type: "PRIVATE",
-      team_size: 0,
-      website_url: "",
-      phone: "",
-      email: "",
+      name: company?.name || "",
+      description: company?.description || "",
+      location: company?.location || "",
+      industry: company?.industry || "",
+      logoUrl: company?.logoUrl || "",
+      foundedIn: user?.data.company?.foundedIn
+        ? new Date(user.data.company.foundedIn)
+        : new Date(),
+      organizationType:
+        (company?.organizationType as "PRIVATE",
+        "PUBLIC",
+        "GOVERNMENT",
+        "NGO") || "PRIVATE",
+      teamSize: company?.teamSize || 0,
+      websiteUrl: company?.websiteUrl || "",
+      phone: company?.phone || "",
+      email: company?.email || "",
     },
   });
   const { handleSubmit, control, watch, setValue } = form;
@@ -48,16 +61,29 @@ export default function CompantForm() {
     setValue("description", value);
   };
 
-  const onSubmit = (data: CompanyValues): void => {
-    console.log(data);
+  const onSubmit = async (data: CompanyValues) => {
+    try {
+      const res = await addCompany(data);
+
+      if (res !== undefined) {
+        toast({
+          title: "Company updated",
+          description: "Your company profile has been saved successfully",
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Company update failed",
+        description: "There is something wrong, Please try again",
+      });
+    }
   };
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md">
-      <h1 className="text-2xl font-bold mb-6 text-gray-800">
-        Company Registration Form
-      </h1>
+    <>
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
           {/* Name */}
           <FormField
             control={control}
@@ -119,7 +145,7 @@ export default function CompantForm() {
           {/* Logo URL */}
           <FormField
             control={control}
-            name="logo_url"
+            name="logoUrl"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Logo URL</FormLabel>
@@ -134,7 +160,7 @@ export default function CompantForm() {
           {/* Founded In */}
           <FormField
             control={control}
-            name="founded_in"
+            name="foundedIn"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Founded Date</FormLabel>
@@ -142,7 +168,11 @@ export default function CompantForm() {
                   <Input
                     type="date"
                     value={format(field.value || new Date(), "yyyy-MM-dd")}
-                    onChange={(e) => field.onChange(new Date(e.target.value))}
+                    onChange={(e) => {
+                      const newDate = new Date(e.target.value);
+                      field.onChange(newDate);
+                      setValue("foundedIn", newDate);
+                    }}
                   />
                 </FormControl>
                 <FormMessage />
@@ -153,7 +183,7 @@ export default function CompantForm() {
           {/* Organization Type */}
           <FormField
             control={control}
-            name="organization_type"
+            name="organizationType"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Organization Type</FormLabel>
@@ -181,7 +211,7 @@ export default function CompantForm() {
           {/* Team Size */}
           <FormField
             control={control}
-            name="team_size"
+            name="teamSize"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Team Size</FormLabel>
@@ -201,7 +231,7 @@ export default function CompantForm() {
           {/* Website URL */}
           <FormField
             control={control}
-            name="website_url"
+            name="websiteUrl"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Website URL</FormLabel>
@@ -245,12 +275,10 @@ export default function CompantForm() {
 
           {/* Submit Button */}
           <div className="mt-4">
-            <Button type="submit" className="w-full">
-              Submit
-            </Button>
+            <ButtonWithLoading label="Update" isLoading={isLoading} />
           </div>
         </form>
       </Form>
-    </div>
+    </>
   );
 }

@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select";
 import { JobShema, JobValeus } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CalendarIcon, ChevronsRight } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -32,6 +32,10 @@ import {
 } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
+import { useAddJobMutation } from "@/store/slices/useJobSlice";
+import ButtonWithLoading from "@/components/ButtonWithLoading";
+import { parseRupiah, rupiahFormatter } from "@/lib/rupiahFormatter";
 
 const levels = [
   {
@@ -66,8 +70,8 @@ const jobtype = [
     value: "REMOTE",
   },
   {
-    label: "Freelancer",
-    value: "FREELANCER",
+    label: "Freelance",
+    value: "FREELANCE",
   },
 ];
 
@@ -116,6 +120,8 @@ const jobRoles = [
 ];
 
 export default function PostJoForm() {
+  const { toast } = useToast();
+  const [addJob, { isLoading }] = useAddJobMutation();
   const form = useForm<JobValeus>({
     resolver: zodResolver(JobShema),
     defaultValues: {
@@ -127,10 +133,10 @@ export default function PostJoForm() {
       salaryType: "",
       education: "",
       experience: "",
-      type: "",
+      jobType: "",
       vacancies: "",
-      expiratedAt: new Date(),
-      level: "",
+      expiredAt: new Date(),
+      jobLevel: "",
       country: "",
       city: "",
       jobBenefits: [],
@@ -140,8 +146,8 @@ export default function PostJoForm() {
 
   const { setValue, watch } = form;
   const selectedBenefits = watch("jobBenefits");
-  const descriptionEditor = watch("education");
-  const dateValue = watch("expiratedAt");
+  const descriptionEditor = watch("description");
+  const dateValue = watch("expiredAt");
 
   const toggleBenefit = (value: string): void => {
     if (selectedBenefits.includes(value)) {
@@ -157,9 +163,27 @@ export default function PostJoForm() {
     setValue("description", value);
   };
 
-  const onSubmit = (data: JobValeus) => {
-    console.log(data);
+  const onSubmit = async (data: JobValeus) => {
+    try {
+      const res = await addJob(data);
+
+      if (res !== undefined) {
+        toast({
+          title: "Job created successfully",
+          description: "Your job has been posted successfully",
+        });
+        form.reset();
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Job Posting Failed",
+        description: "There is something wrong, Please try again",
+      });
+    }
   };
+
   return (
     <div className="">
       <h2 className="text-xl font-semibold mb-5">Post a Job</h2>
@@ -234,14 +258,20 @@ export default function PostJoForm() {
                 <FormField
                   control={form.control}
                   name="minSalary"
-                  render={({ field }) => (
+                  render={({}) => (
                     <FormItem>
                       <FormLabel>Min (Optional)</FormLabel>
                       <FormControl>
                         <Input
-                          type="number"
-                          {...field}
+                          type="text"
                           placeholder="Enter the min salary of this job"
+                          value={rupiahFormatter(watch("minSalary"))}
+                          onChange={(e) => {
+                            setValue(
+                              "minSalary",
+                              String(parseRupiah(e.target.value))
+                            );
+                          }}
                         />
                       </FormControl>
                       <FormMessage />
@@ -253,14 +283,20 @@ export default function PostJoForm() {
                 <FormField
                   control={form.control}
                   name="maxSalary"
-                  render={({ field }) => (
+                  render={({}) => (
                     <FormItem>
                       <FormLabel>Max (Optional)</FormLabel>
                       <FormControl>
                         <Input
-                          type="number"
-                          {...field}
+                          type="text"
                           placeholder="Enter the max salary of this job"
+                          value={rupiahFormatter(watch("maxSalary"))}
+                          onChange={(e) => {
+                            setValue(
+                              "maxSalary",
+                              String(parseRupiah(e.target.value))
+                            );
+                          }}
                         />
                       </FormControl>
                       <FormMessage />
@@ -346,7 +382,7 @@ export default function PostJoForm() {
               <div className="flex-1">
                 <FormField
                   control={form.control}
-                  name="type"
+                  name="jobType"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Job Type</FormLabel>
@@ -390,7 +426,7 @@ export default function PostJoForm() {
               <div className="flex-1">
                 <FormField
                   control={form.control}
-                  name="expiratedAt"
+                  name="expiredAt"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Expiration Date</FormLabel>
@@ -406,7 +442,7 @@ export default function PostJoForm() {
                             >
                               <CalendarIcon className="mr-2" />
                               {dateValue ? (
-                                format(dateValue, "PPP") // Tetap gunakan format jika dateValue adalah Date
+                                format(dateValue, "PPP")
                               ) : (
                                 <span>Pick a date</span>
                               )}
@@ -415,9 +451,9 @@ export default function PostJoForm() {
                           <PopoverContent className="w-auto p-0">
                             <Calendar
                               mode="single"
-                              selected={field.value} // Gunakan nilai `field.value` langsung
+                              selected={field.value}
                               onSelect={(date) => {
-                                field.onChange(date); // Berikan nilai Date langsung
+                                field.onChange(date);
                               }}
                               initialFocus
                             />
@@ -432,7 +468,7 @@ export default function PostJoForm() {
               <div className="flex-1">
                 <FormField
                   control={form.control}
-                  name="level"
+                  name="jobLevel"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Job Level</FormLabel>
@@ -527,10 +563,11 @@ export default function PostJoForm() {
             </div>
           </div>
 
-          <Button>
+          {/* <Button>
             Post Job
             <ChevronsRight />
-          </Button>
+          </Button> */}
+          <ButtonWithLoading label="Post Job" isLoading={isLoading} />
         </form>
       </Form>
     </div>

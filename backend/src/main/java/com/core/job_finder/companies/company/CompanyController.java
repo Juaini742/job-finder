@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @Validated
@@ -23,5 +20,11 @@ public class CompanyController {
     public ResponseEntity<?> createCompany(@Validated @RequestBody CompanyRequestDTO companyRequestDTO) {
         CompanyResponse companyResponse = companyService.createCompany(companyRequestDTO);
         return GlobalResponse.buildResponse(HttpStatus.CREATED, "Company created successfully", companyResponse);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateCompany(@Validated @RequestBody CompanyRequestDTO companyRequestDTO) {
+        CompanyResponse companyResponse = companyService.updateCompany(companyRequestDTO);
+        return GlobalResponse.buildResponse(HttpStatus.OK, "Company updated successfully", companyResponse);
     }
 }

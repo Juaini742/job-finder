@@ -1,6 +1,6 @@
 "use client";
 
-import { PhoneCall } from "lucide-react";
+import { useGetUserQuery } from "@/store/slices/useUserSlice";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -18,28 +18,32 @@ const navBars = [
   {
     title: "Find Candidate",
     path: "/candidate",
-    role: "employers",
+    role: "RECRUITER",
   },
   {
     title: "Dashboard",
     path: "/dashboard",
-    role: "employers",
+    role: "RECRUITER",
   },
   {
-    title: "Employers",
-    path: "/employers",
+    title: "Recruiter",
+    path: "/RECRUITER",
     role: "",
   },
   {
     title: "My Jobs",
     path: "/my-job",
-    role: "employers",
+    role: "RECRUITER",
   },
 ];
 
 export default function Navbar() {
-  const role = "employers";
+  const { data } = useGetUserQuery();
+  const role = data?.data.role;
   const pathname = usePathname();
+
+  console.log(data);
+
   return (
     <nav className="w-full h-12 flex items-end bg-gray-50">
       <div className="container flex justify-between items-center">
@@ -55,9 +59,9 @@ export default function Navbar() {
                   key={index}
                   className={`${
                     isActive
-                      ? "border-b-2 border-blue-500 text-blue-500 pb-2"
+                      ? "border-b-2 border-primary text-primary pb-2"
                       : "text-gray-700"
-                  } hover:text-blue-500`}
+                  } hover:text-primary`}
                 >
                   {item.title}
                 </Link>

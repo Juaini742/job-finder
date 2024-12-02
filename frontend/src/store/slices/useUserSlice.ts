@@ -1,19 +1,12 @@
 import { BASE_URL } from "@/constant";
+import { UserInterface } from "@/lib/interface";
 import { SignInValeus, SignUpValeus } from "@/lib/validation";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-interface UserData {
-  id: string;
-  fullName: string;
-  email: string;
-  role: string;
-  token: string;
-}
 
 interface SignResponse {
   status: number;
   message: string;
-  data: UserData;
+  data: UserInterface;
 }
 
 export const userApi = createApi({
@@ -24,7 +17,7 @@ export const userApi = createApi({
   }),
   tagTypes: ["user"],
   endpoints: (builder) => ({
-    getUser: builder.query<any, void>({
+    getUser: builder.query<SignResponse, void>({
       query: () => "/secured/user",
       providesTags: ["user"],
     }),

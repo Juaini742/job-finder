@@ -5,6 +5,8 @@ import com.core.job_finder.jobs.job_benefits.JobBenefit;
 import com.core.job_finder.jobs.job_benefits.JobBenefitRepository;
 import com.core.job_finder.jobs.tag.Tag;
 import com.core.job_finder.jobs.tag.TagRepository;
+import com.core.job_finder.social_media.SocialMedia;
+import com.core.job_finder.social_media.SocialMediaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +20,7 @@ public class TableSeeding {
 
     private final TagRepository tagRepository;
     private final JobBenefitRepository jobBenefitRepository;
+    private final SocialMediaRepository socialMediaRepository;
 
     @Bean
     public CommandLineRunner commandLineRunner() {
@@ -98,6 +101,27 @@ public class TableSeeding {
                 System.out.println("Tags have been seeded.");
             } else {
                 System.out.println("Tags already exist in the database.");
+            }
+
+            List<String> socialMediaPlatforms = List.of(
+                    "Facebook",
+                    "Twitter",
+                    "LinkedIn",
+                    "Instagram",
+                    "YouTube",
+                    "TikTok"
+            );
+
+            if (socialMediaRepository.findAll().isEmpty()) {
+                socialMediaPlatforms.forEach(platform -> {
+                    if (socialMediaRepository.findByName(platform).isEmpty()) {
+                        SocialMedia socialMediaDB = new SocialMedia(platform);
+                        socialMediaRepository.save(socialMediaDB);
+                    }
+                });
+                System.out.println("Social media platforms have been seeded.");
+            } else {
+                System.out.println("Social media platforms already exist in the database.");
             }
         };
     }

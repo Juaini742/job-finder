@@ -1,8 +1,8 @@
 package com.core.job_finder.auth;
 
 
+import com.core.job_finder.helper.CookieHelper;
 import com.core.job_finder.helper.GlobalResponse;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ public class AuthController {
             HttpServletResponse response
     ) {
         AuthResponse authResponse = authService.register(authRequestDTO);
-        setToken(response, authResponse);
+        CookieHelper.setCookie(response, "access_token", ("Bearer_" + authResponse.token()), 60 * 60 * 24 * 7);
         return GlobalResponse
                 .buildResponse(HttpStatus.CREATED, "User registered successfully", authResponse);
     }
@@ -38,19 +38,8 @@ public class AuthController {
             HttpServletResponse response
     ) {
         AuthResponse authResponse = authService.login(authRequestDTO);
-        setToken(response, authResponse);
+        CookieHelper.setCookie(response, "access_token", ("Bearer_" + authResponse.token()), 60 * 60 * 24 * 7);
         return GlobalResponse
                 .buildResponse(HttpStatus.OK, "User registered successfully", authResponse);
     }
-
-    private void setToken(HttpServletResponse response, AuthResponse authResponse) {
-        Cookie cookie = new Cookie("access_token", ("Bearer_" + authResponse.token()));
-        cookie.setHttpOnly(true);
-        cookie.setSecure(true);
-        cookie.setPath("/");
-        cookie.setDomain("localhost");
-        cookie.setMaxAge(60 * 60 * 24 * 7); // 1 week
-        response.addCookie(cookie);
-    }
-
 }

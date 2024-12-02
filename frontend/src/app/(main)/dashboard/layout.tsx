@@ -11,7 +11,7 @@ export default function DashboardLayout({
       <DashboardNavbar />
 
       {/* Main Content */}
-      <main className="p-4 pl-5 border-l">{children} </main>
+      <main className="p-4 pl-5 border-l w-full">{children} </main>
     </div>
   );
 }

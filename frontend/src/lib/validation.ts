@@ -33,11 +33,11 @@ export const JobShema = z.object({
     z.string().min(1, { message: "Please enter your tags of job" })
   ),
   experience: requiredString,
-  type: requiredString,
-  level: requiredString,
+  jobType: requiredString,
+  jobLevel: requiredString,
   education: requiredString,
   sharedAt: z.date().optional(),
-  expiratedAt: z.date().refine((data) => data > new Date(), {
+  expiredAt: z.date().refine((data) => data > new Date(), {
     message: "Expiration date must be in the future",
   }),
   minSalary: stringOptional,
@@ -57,20 +57,20 @@ export const CompanySchema = z.object({
   description: z.string().optional(),
   location: z.string().optional(),
   industry: z.string().optional(),
-  logo_url: z
+  logoUrl: z
     .string()
     .url({ message: "Logo URL must be a valid URL" })
     .optional(),
-  founded_in: z.date({ message: "Founded date is required" }),
-  organization_type: z.enum(["PRIVATE", "PUBLIC", "GOVERNMENT", "NGO"], {
+  foundedIn: z.date({ message: "Founded date is required" }),
+  organizationType: z.enum(["PRIVATE", "PUBLIC", "GOVERNMENT", "NGO"], {
     message:
       "Organization type must be one of PRIVATE, PUBLIC, GOVERNMENT, or NGO",
   }),
-  team_size: z
+  teamSize: z
     .number()
     .nonnegative({ message: "Team size must be a non-negative number" })
     .optional(),
-  website_url: z
+  websiteUrl: z
     .string()
     .url({ message: "Website URL must be a valid URL" })
     .optional(),

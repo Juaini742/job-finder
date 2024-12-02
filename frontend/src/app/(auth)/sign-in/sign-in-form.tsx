@@ -33,14 +33,16 @@ export default function SignInForm() {
 
   const onSubmit = async (data: SignInValeus) => {
     try {
-      await signIn(data).then(() => {
+      const res = await signIn(data);
+
+      if (res.data !== undefined) {
         form.reset();
         toast({
           title: "Sign in success",
           description: "You can now access your account",
         });
         window.location.reload();
-      });
+      }
     } catch (error) {
       console.error(error);
       toast({

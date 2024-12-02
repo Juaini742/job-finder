@@ -1,5 +1,6 @@
 package com.core.job_finder.auth;
 
+import com.core.job_finder.helper.CookieHelper;
 import com.core.job_finder.user.User;
 import com.core.job_finder.user.UserRepository;
 import jakarta.servlet.FilterChain;
@@ -51,9 +52,12 @@ public class JwtFilter extends OncePerRequestFilter {
             if (cookie.isPresent()) {
                 token = jwtService.extractTokenFromBearer(cookie.get().getValue());
             }
+        } else {
+            CookieHelper.deleteCookie(response, "access_token");
         }
 
         if (token == null) {
+            CookieHelper.deleteCookie(response, "access_token");
             response.setStatus(HttpStatus.BAD_REQUEST.value());
             response.setContentType("application/json");
             response.getWriter().write("{\"error\": \"Unauthorized\"}");

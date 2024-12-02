@@ -102,8 +102,7 @@ public class Job extends BaseEntity {
     public enum Job_Type {
         FULL_TIME,
         PART_TIME,
-        INTERNSHIP,
-        CONTRACT,
+        REMOTE,
         FREELANCE;
 
         public static Job_Type fromString(String value) {

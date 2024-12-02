@@ -1,6 +1,9 @@
 package com.core.job_finder.companies.company;
 
-import java.util.Date;
+
+import com.core.job_finder.companies.social_media_company.SocialMediaCompanyResponse;
+
+import java.util.List;
 
 public record CompanyResponse(
         String id,
@@ -9,9 +12,12 @@ public record CompanyResponse(
         String location,
         String industry,
         String logoUrl,
-        Date foundedIn,
+        String foundedIn,
         Company.OrganizationType organizationType,
         Long teamSize,
-        String websiteUrl
+        String websiteUrl,
+        String phone,
+        String email,
+        List<SocialMediaCompanyResponse> socialMedia
 ) {
 }

@@ -3,13 +3,13 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 const createNoopStorage = () => {
   return {
     getItem(_key: any) {
-      return Promise.resolve(null); // Mengembalikan null untuk SSR
+      return Promise.resolve(null);
     },
     setItem(_key: any, value: any) {
-      return Promise.resolve(value); // Tidak menyimpan apa-apa di SSR
+      return Promise.resolve(value);
     },
     removeItem(_key: any) {
-      return Promise.resolve(); // Tidak melakukan apa-apa di SSR
+      return Promise.resolve();
     },
   };
 };
