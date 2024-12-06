@@ -14,12 +14,12 @@ import {
 } from "@/components/ui/table";
 import { calculateRemainingTime } from "@/lib/calculateRemainingTime";
 import { extractJobType } from "@/lib/extractJobType";
-import { useGetJobQuery } from "@/store/slices/useJobSlice";
+import { useGetJobByUserQuery } from "@/store/slices/useJobSlice";
 import { CircleCheckBig, EllipsisVertical, Users } from "lucide-react";
 import Link from "next/link";
 
 export default function JobList() {
-  const { data } = useGetJobQuery();
+  const { data } = useGetJobByUserQuery();
 
   console.log(data);
 
@@ -29,6 +29,7 @@ export default function JobList() {
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader className="bg-gray-100">
           <TableRow>
+            <TableHead>NO</TableHead>
             <TableHead>JOBS</TableHead>
             <TableHead>STATUS</TableHead>
             <TableHead>APPLICATION</TableHead>
@@ -38,6 +39,7 @@ export default function JobList() {
         <TableBody>
           {data?.data.map((item, index) => (
             <TableRow key={index}>
+              <TableCell>{index + 1}</TableCell>
               <TableCell>
                 <div className="flex flex-col gap-2 w-full">
                   <p>{item.title}</p>
@@ -58,7 +60,7 @@ export default function JobList() {
               <TableCell>
                 <div className="flex gap-2 items-center text-muted-foreground">
                   <Users className="size-5" />
-                  10 Applications
+                  {item.applications?.length} Applications
                 </div>
               </TableCell>
               <TableCell className="text-right">

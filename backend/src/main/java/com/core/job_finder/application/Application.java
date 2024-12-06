@@ -4,6 +4,7 @@ import com.core.job_finder.base_enrity.BaseEntity;
 import com.core.job_finder.cv.Cv;
 import com.core.job_finder.jobs.job.Job;
 import com.core.job_finder.user.User;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -24,6 +25,7 @@ public class Application extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "job_id", referencedColumnName = "id")
+    @JsonManagedReference
     private Job job;
 
     @ManyToOne

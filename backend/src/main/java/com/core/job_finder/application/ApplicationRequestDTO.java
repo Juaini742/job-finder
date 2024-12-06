@@ -13,12 +13,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ApplicationRequestDTO {
 
-    @NotBlank(message = "Job ID is required", groups = {onCreate.class, onUpdate.class})
-    String jobId;
+    private String id;
 
-    @NotBlank(message = "CV ID is required", groups = {onCreate.class, onUpdate.class})
-    String cvId;
+    @NotBlank(message = "Job ID is required", groups = {onCreate.class})
+    private String jobId;
+
+    @NotBlank(message = "CV ID is required", groups = {onCreate.class})
+    private String cvId;
 
     @NotBlank(message = "Status is required", groups = {onUpdate.class})
-    String status;
+    private String status;
 }

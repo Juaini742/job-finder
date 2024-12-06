@@ -1,34 +1,21 @@
-import { BASE_URL } from "@/constant";
-import { UserInterface } from "@/lib/interface";
+import { CommonResponse, UserInterface } from "@/lib/interface";
 import { SignInValeus, SignUpValeus } from "@/lib/validation";
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { apiSlice } from "./apiSlice";
 
-interface SignResponse {
-  status: number;
-  message: string;
-  data: UserInterface;
-}
-
-export const userApi = createApi({
-  reducerPath: "userApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}`,
-    credentials: "include",
-  }),
-  tagTypes: ["user"],
+export const userApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getUser: builder.query<SignResponse, void>({
+    getUser: builder.query<CommonResponse<UserInterface>, void>({
       query: () => "/secured/user",
-      providesTags: ["user"],
+      providesTags: ["User"],
     }),
 
-    signUp: builder.mutation<SignResponse, SignUpValeus>({
+    signUp: builder.mutation<CommonResponse<UserInterface>, SignUpValeus>({
       query: (data: SignUpValeus) => ({
         url: "/public/auth/register",
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["user"],
+      invalidatesTags: ["User"],
     }),
 
     signIn: builder.mutation({
@@ -36,6 +23,7 @@ export const userApi = createApi({
         url: "/public/auth/login",
         method: "POST",
         body: data,
+        invalidatesTags: ["User"],
       }),
     }),
 

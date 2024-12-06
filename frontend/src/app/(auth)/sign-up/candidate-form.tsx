@@ -36,23 +36,23 @@ export default function CandidateForm() {
   });
 
   const onSubmit = async (data: SignUpValeus) => {
-    try {
-      await signUp(data).then(() => {
-        form.reset();
+    await signUp(data)
+      .unwrap()
+      .then(() => {
         toast({
-          title: "Sign Up success",
+          title: "Sign up success",
           description: "You can now access your account",
         });
         window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+        toast({
+          variant: "destructive",
+          title: "Sign up Failure",
+          description: "There was an error, please try again",
+        });
       });
-    } catch (error) {
-      console.error(error);
-      toast({
-        variant: "destructive",
-        title: "Registration Failed",
-        description: "There is something wrong, Please try again",
-      });
-    }
   };
 
   return (

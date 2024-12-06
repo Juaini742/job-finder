@@ -32,29 +32,24 @@ export default function SignInForm() {
   });
 
   const onSubmit = async (data: SignInValeus) => {
-    try {
-      const res = await signIn(data);
-
-      if (res.data !== undefined) {
-        form.reset();
+    await signIn(data)
+      .unwrap()
+      .then(() => {
         toast({
           title: "Sign in success",
           description: "You can now access your account",
         });
         window.location.reload();
-      }
-    } catch (error) {
-      console.error(error);
-      toast({
-        variant: "destructive",
-        title: "Sign in Failure",
-        description: "There was an error, please try again",
+      })
+      .catch((error) => {
+        console.error(error);
+        toast({
+          variant: "destructive",
+          title: "Sign in Failure",
+          description: "There was an error, please try again",
+        });
       });
-    }
   };
-
-  // const { data } = useGetUserQuery();
-  // console.log(data);
 
   return (
     <div>

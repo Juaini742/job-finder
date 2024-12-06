@@ -1,0 +1,440 @@
+[
+  {
+    "title": "Spring Developer",
+    "tags": [
+      "Java",
+      "Spring Boot",
+      "Microservices"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Remote Work",
+      "Learning Budget"
+    ],
+    "experience": "1-3 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "JUNIOR",
+    "education": "Bachelor's Degree in Computer Science",
+    "sharedAt": "2024-11-30T09:00:00",
+    "expiredAt": "2024-12-31T23:59:59",
+    "minSalary": 3000000,
+    "maxSalary": 7000000,
+    "description": "<p>We are looking for a <strong>dedicated and passionate Software Engineer</strong> to join our dynamic team. As a <em>Backend Developer</em>, you will play a key role in building robust and scalable applications using <strong>Java</strong>, <strong>Spring Boot</strong>, and <strong>Microservices architecture</strong>.</p><p><strong>Responsibilities:</strong></p><ul><li>Design, develop, and maintain backend services using Spring Boot.</li><li>Collaborate with cross-functional teams to integrate front-end and back-end systems.</li><li>Optimize applications for maximum performance and scalability.</li><li>Write clean, maintainable, and efficient code following industry best practices.</li><li>Troubleshoot, debug, and resolve technical issues.</li></ul><p><strong>Requirements:</strong></p><ul><li>Bachelor's Degree in Computer Science or a related field.</li><li>1-3 years of experience in Java and Spring Boot development.</li><li>Knowledge of Microservices architecture and RESTful APIs.</li><li>Familiarity with version control systems such as Git.</li><li>Good problem-solving and analytical skills.</li></ul><p><em>If you are enthusiastic about developing cutting-edge technology and want to work in a supportive and innovative environment, we encourage you to apply!</em></p>",
+    "country": "Indonesia",
+    "city": "Jakarta",
+    "jobRole": "Backend Developer",
+    "salaryType": "MONTHLY",
+    "desirable": "Skill full",
+    "vacancies": 3
+  },
+  {
+    "title": "Frontend Developer",
+    "tags": [
+      "JavaScript",
+      "React",
+      "HTML",
+      "CSS"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Work From Home",
+      "Gym Membership"
+    ],
+    "experience": "2-4 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "MID",
+    "education": "Bachelor's Degree in Information Technology",
+    "sharedAt": "2024-11-29T08:30:00",
+    "expiredAt": "2024-12-30T23:59:59",
+    "minSalary": 4000000,
+    "maxSalary": 8000000,
+    "description": "<p><strong>Join our growing team!</strong> We are looking for a <em>Junior Spring Boot Developer</em> who is passionate about backend development and building scalable applications.</p><p><strong>What You'll Do:</strong></p><ul><li>Develop and maintain backend systems using Java and Spring Boot.</li><li>Implement Microservices to enhance application performance and modularity.</li><li>Collaborate with the front-end team to ensure seamless integration.</li><li>Write well-documented and reusable code.</li><li>Participate in code reviews and provide constructive feedback.</li></ul><p><strong>What We Expect:</strong></p><ul><li>1-3 years of experience in Java and Spring Boot development.</li><li>Understanding of Microservices design principles.</li><li>Experience with relational databases like MySQL or PostgreSQL.</li><li>Strong communication and teamwork skills.</li><li>Ability to work independently and meet deadlines.</li></ul><p><em>This is a great opportunity for someone eager to grow their career in a supportive and remote-friendly company!</em></p>",
+    "country": "Indonesia",
+    "city": "Bandung",
+    "jobRole": "Frontend Developer",
+    "salaryType": "MONTHLY",
+    "desirable": "Creative and detail-oriented",
+    "vacancies": 2
+  },
+  {
+    "title": "DevOps Engineer",
+    "tags": [
+      "AWS",
+      "Docker",
+      "Kubernetes",
+      "CI/CD"
+    ],
+    "jobBenefits": [
+      "Paid Time Off",
+      "Health Insurance",
+      "Remote Work"
+    ],
+    "experience": "3-5 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "MID",
+    "education": "Bachelor's Degree in Computer Engineering",
+    "sharedAt": "2024-11-28T10:00:00",
+    "expiredAt": "2024-12-31T23:59:59",
+    "minSalary": 5000000,
+    "maxSalary": 10000000,
+    "description": "<p><strong>Exciting Opportunity for Backend Developers!</strong></p><p>Are you a <em>Java Developer</em> with a knack for creating scalable backend solutions? Join us to work on innovative projects using <strong>Spring Boot</strong> and <strong>Microservices</strong>.</p><p><strong>Your Role:</strong></p><ul><li>Design and develop backend applications with a focus on performance and scalability.</li><li>Develop APIs and ensure their security and efficiency.</li><li>Monitor and optimize application performance.</li><li>Work closely with QA teams to ensure high-quality releases.</li><li>Stay updated with the latest technology trends and bring fresh ideas to the table.</li></ul><p><strong>Skills & Experience:</strong></p><ul><li>Bachelor's Degree in Computer Science or equivalent.</li><li>1-3 years of backend development experience.</li><li>Proficiency in Java, Spring Boot, and RESTful APIs.</li><li>Experience with cloud services such as AWS or Azure is a plus.</li><li>Strong problem-solving and debugging skills.</li></ul><p><em>Take the next step in your career and apply today!</em></p>",
+    "country": "Indonesia",
+    "city": "Surabaya",
+    "jobRole": "Infrastructure Engineer",
+    "salaryType": "MONTHLY",
+    "desirable": "Problem-solving mindset",
+    "vacancies": 1
+  },
+  {
+    "title": "Data Scientist",
+    "tags": [
+      "Python",
+      "Machine Learning",
+      "Big Data",
+      "SQL"
+    ],
+    "jobBenefits": [
+      "Flexible Schedule",
+      "Research Opportunities",
+      "Health Insurance"
+    ],
+    "experience": "2-5 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "MID",
+    "education": "Master's Degree in Data Science",
+    "sharedAt": "2024-11-27T14:00:00",
+    "expiredAt": "2024-12-30T23:59:59",
+    "minSalary": 7000000,
+    "maxSalary": 12000000,
+    "description": "<p><strong>Become a Part of Our Innovative Team!</strong></p><p>We are seeking a <em>Junior Backend Developer</em> with a solid foundation in <strong>Java</strong> and <strong>Spring Boot</strong> to contribute to our Microservices-based architecture.</p><p><strong>Your Contributions:</strong></p><ul><li>Collaborate with architects and senior developers to design scalable systems.</li><li>Implement backend features and ensure their smooth operation.</li><li>Write testable and efficient code adhering to company standards.</li><li>Debug and fix reported issues in a timely manner.</li><li>Document processes and maintain system integrity.</li></ul><p><strong>What We Look For:</strong></p><ul><li>Bachelor's Degree in Computer Science or a related discipline.</li><li>1-3 years of hands-on experience in Java development.</li><li>Familiarity with Spring Boot and related frameworks.</li><li>Understanding of database management and query optimization.</li><li>Team player with strong communication skills.</li></ul><p><em>Join us and be part of a team that values innovation, learning, and excellence!</em></p>",
+    "country": "Indonesia",
+    "city": "Yogyakarta",
+    "jobRole": "Data Scientist",
+    "salaryType": "MONTHLY",
+    "desirable": "Strong analytical skills",
+    "vacancies": 2
+  },
+  {
+    "title": "Mobile Developer",
+    "tags": [
+      "Kotlin",
+      "Flutter",
+      "Android",
+      "iOS"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Work From Anywhere",
+      "Learning Stipend"
+    ],
+    "experience": "1-3 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "JUNIOR",
+    "education": "Bachelor's Degree in Mobile Development",
+    "sharedAt": "2024-11-26T09:00:00",
+    "expiredAt": "2024-12-28T23:59:59",
+    "minSalary": 4000000,
+    "maxSalary": 9000000,
+    "description": "<p><strong>Kickstart Your Career with Us!</strong></p><p>We are hiring a <em>Junior Spring Boot Developer</em> who is excited to work on challenging projects and grow alongside a talented team.</p><p><strong>Responsibilities:</strong></p><ul><li>Develop high-quality backend systems using Java and Spring Boot.</li><li>Integrate third-party services and APIs to enhance system functionality.</li><li>Contribute to the architecture of Microservices-based solutions.</li><li>Collaborate with other developers and stakeholders to deliver projects on time.</li><li>Participate in technical discussions and propose improvements.</li></ul><p><strong>Qualifications:</strong></p><ul><li>Bachelor's Degree in Computer Science or equivalent.</li><li>1-3 years of backend development experience.</li><li>Proficient in Java, Spring Boot, and database management.</li><li>Basic understanding of Microservices and containerization tools like Docker.</li><li>Strong attention to detail and willingness to learn.</li></ul><p><em>Take advantage of our learning budget and remote work options while contributing to impactful projects!</em></p>",
+    "country": "Indonesia",
+    "city": "Medan",
+    "jobRole": "Mobile Developer",
+    "salaryType": "MONTHLY",
+    "desirable": "Eager to learn",
+    "vacancies": 3
+  },
+  {
+    "title": "UI/UX Designer",
+    "tags": [
+      "Figma",
+      "Sketch",
+      "Adobe XD",
+      "Prototyping"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Remote Work",
+      "Stock Options"
+    ],
+    "experience": "1-3 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "JUNIOR",
+    "education": "Bachelor's Degree in Design",
+    "sharedAt": "2024-11-25T08:00:00",
+    "expiredAt": "2024-12-25T23:59:59",
+    "minSalary": 3000000,
+    "maxSalary": 6000000,
+    "description": "<p><strong>Kickstart Your Career with Us!</strong></p><p>We are hiring a <em>Junior Spring Boot Developer</em> who is excited to work on challenging projects and grow alongside a talented team.</p><p><strong>Responsibilities:</strong></p><ul><li>Develop high-quality backend systems using Java and Spring Boot.</li><li>Integrate third-party services and APIs to enhance system functionality.</li><li>Contribute to the architecture of Microservices-based solutions.</li><li>Collaborate with other developers and stakeholders to deliver projects on time.</li><li>Participate in technical discussions and propose improvements.</li></ul><p><strong>Qualifications:</strong></p><ul><li>Bachelor's Degree in Computer Science or equivalent.</li><li>1-3 years of backend development experience.</li><li>Proficient in Java, Spring Boot, and database management.</li><li>Basic understanding of Microservices and containerization tools like Docker.</li><li>Strong attention to detail and willingness to learn.</li></ul><p><em>Take advantage of our learning budget and remote work options while contributing to impactful projects!</em></p>",
+    "country": "Indonesia",
+    "city": "Semarang",
+    "jobRole": "UI/UX Designer",
+    "salaryType": "MONTHLY",
+    "desirable": "Attention to detail",
+    "vacancies": 1
+  },
+  {
+    "title": "Cybersecurity Analyst",
+    "tags": [
+      "Cybersecurity",
+      "Penetration Testing",
+      "Firewall",
+      "SIEM"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Flexible Work Hours",
+      "Professional Certification"
+    ],
+    "experience": "3-6 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "MID",
+    "education": "Bachelor's Degree in Cybersecurity",
+    "sharedAt": "2024-11-24T11:00:00",
+    "expiredAt": "2024-12-31T23:59:59",
+    "minSalary": 8000000,
+    "maxSalary": 15000000,
+    "description": "<p><strong>Become a Part of Our Innovative Team!</strong></p><p>We are seeking a <em>Junior Backend Developer</em> with a solid foundation in <strong>Java</strong> and <strong>Spring Boot</strong> to contribute to our Microservices-based architecture.</p><p><strong>Your Contributions:</strong></p><ul><li>Collaborate with architects and senior developers to design scalable systems.</li><li>Implement backend features and ensure their smooth operation.</li><li>Write testable and efficient code adhering to company standards.</li><li>Debug and fix reported issues in a timely manner.</li><li>Document processes and maintain system integrity.</li></ul><p><strong>What We Look For:</strong></p><ul><li>Bachelor's Degree in Computer Science or a related discipline.</li><li>1-3 years of hands-on experience in Java development.</li><li>Familiarity with Spring Boot and related frameworks.</li><li>Understanding of database management and query optimization.</li><li>Team player with strong communication skills.</li></ul><p><em>Join us and be part of a team that values innovation, learning, and excellence!</em></p>",
+    "country": "Indonesia",
+    "city": "Jakarta",
+    "jobRole": "Security Engineer",
+    "salaryType": "MONTHLY",
+    "desirable": "Critical thinking",
+    "vacancies": 2
+  },
+  {
+    "title": "Project Manager",
+    "tags": [
+      "Agile",
+      "Scrum",
+      "Leadership",
+      "Communication"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Work-Life Balance",
+      "Performance Bonus"
+    ],
+    "experience": "5-8 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "SENIOR",
+    "education": "Bachelor's Degree in Business Administration",
+    "sharedAt": "2024-11-23T13:00:00",
+    "expiredAt": "2024-12-29T23:59:59",
+    "minSalary": 10000000,
+    "maxSalary": 20000000,
+    "description": "<p><strong>Exciting Opportunity for Backend Developers!</strong></p><p>Are you a <em>Java Developer</em> with a knack for creating scalable backend solutions? Join us to work on innovative projects using <strong>Spring Boot</strong> and <strong>Microservices</strong>.</p><p><strong>Your Role:</strong></p><ul><li>Design and develop backend applications with a focus on performance and scalability.</li><li>Develop APIs and ensure their security and efficiency.</li><li>Monitor and optimize application performance.</li><li>Work closely with QA teams to ensure high-quality releases.</li><li>Stay updated with the latest technology trends and bring fresh ideas to the table.</li></ul><p><strong>Skills & Experience:</strong></p><ul><li>Bachelor's Degree in Computer Science or equivalent.</li><li>1-3 years of backend development experience.</li><li>Proficiency in Java, Spring Boot, and RESTful APIs.</li><li>Experience with cloud services such as AWS or Azure is a plus.</li><li>Strong problem-solving and debugging skills.</li></ul><p><em>Take the next step in your career and apply today!</em></p>",
+    "country": "Indonesia",
+    "city": "Jakarta",
+    "jobRole": "Project Manager",
+    "salaryType": "MONTHLY",
+    "desirable": "Strong leadership skills",
+    "vacancies": 1
+  },
+  {
+    "title": "Quality Assurance Engineer",
+    "tags": [
+      "Testing",
+      "Automation",
+      "Selenium",
+      "Bug Tracking"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Training Programs",
+      "Remote Options"
+    ],
+    "experience": "1-3 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "JUNIOR",
+    "education": "Bachelor's Degree in Computer Science",
+    "sharedAt": "2024-11-22T10:00:00",
+    "expiredAt": "2024-12-31T23:59:59",
+    "minSalary": 3000000,
+    "maxSalary": 7000000,
+    "description": "<p><strong>Join our growing team!</strong> We are looking for a <em>Junior Spring Boot Developer</em> who is passionate about backend development and building scalable applications.</p><p><strong>What You'll Do:</strong></p><ul><li>Develop and maintain backend systems using Java and Spring Boot.</li><li>Implement Microservices to enhance application performance and modularity.</li><li>Collaborate with the front-end team to ensure seamless integration.</li><li>Write well-documented and reusable code.</li><li>Participate in code reviews and provide constructive feedback.</li></ul><p><strong>What We Expect:</strong></p><ul><li>1-3 years of experience in Java and Spring Boot development.</li><li>Understanding of Microservices design principles.</li><li>Experience with relational databases like MySQL or PostgreSQL.</li><li>Strong communication and teamwork skills.</li><li>Ability to work independently and meet deadlines.</li></ul><p><em>This is a great opportunity for someone eager to grow their career in a supportive and remote-friendly company!</em></p>",
+    "country": "Indonesia",
+    "city": "Malang",
+    "jobRole": "QA Engineer",
+    "salaryType": "MONTHLY",
+    "desirable": "Attention to detail",
+    "vacancies": 2
+  },
+  {
+    "title": "Cloud Engineer",
+    "tags": [
+      "AWS",
+      "Azure",
+      "Cloud Computing",
+      "Terraform"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Stock Options",
+      "Remote Work"
+    ],
+    "experience": "2-5 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "MID",
+    "education": "Bachelor's Degree in Computer Science",
+    "sharedAt": "2024-11-21T09:30:00",
+    "expiredAt": "2024-12-31T23:59:59",
+    "minSalary": 6000000,
+    "maxSalary": 13000000,
+    "description": "<p>We are looking for a <strong>dedicated and passionate Software Engineer</strong> to join our dynamic team. As a <em>Backend Developer</em>, you will play a key role in building robust and scalable applications using <strong>Java</strong>, <strong>Spring Boot</strong>, and <strong>Microservices architecture</strong>.</p><p><strong>Responsibilities:</strong></p><ul><li>Design, develop, and maintain backend services using Spring Boot.</li><li>Collaborate with cross-functional teams to integrate front-end and back-end systems.</li><li>Optimize applications for maximum performance and scalability.</li><li>Write clean, maintainable, and efficient code following industry best practices.</li><li>Troubleshoot, debug, and resolve technical issues.</li></ul><p><strong>Requirements:</strong></p><ul><li>Bachelor's Degree in Computer Science or a related field.</li><li>1-3 years of experience in Java and Spring Boot development.</li><li>Knowledge of Microservices architecture and RESTful APIs.</li><li>Familiarity with version control systems such as Git.</li><li>Good problem-solving and analytical skills.</li></ul><p><em>If you are enthusiastic about developing cutting-edge technology and want to work in a supportive and innovative environment, we encourage you to apply!</em></p>",
+    "country": "Indonesia",
+    "city": "Makassar",
+    "jobRole": "Cloud Engineer",
+    "salaryType": "MONTHLY",
+    "desirable": "Innovative mindset",
+    "vacancies": 2
+  },
+  {
+    "title": "Data Scientist",
+    "tags": [
+      "Data Science",
+      "AI & Machine Learning",
+      "Python",
+      "Big Data"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Remote Work",
+      "Learning Budget",
+      "Paid Time Off"
+    ],
+    "experience": "3-6 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "SENIOR",
+    "education": "Master's Degree in Data Science or related field",
+    "sharedAt": "2024-11-22T10:00:00",
+    "expiredAt": "2025-01-10T23:59:59",
+    "minSalary": 8000000,
+    "maxSalary": 15000000,
+    "description": "<p>Join our team as a <strong>Data Scientist</strong> where you'll harness the power of data to solve business problems. You'll work on machine learning models and big data analysis to improve decision-making.</p>",
+    "country": "Indonesia",
+    "city": "Jakarta",
+    "jobRole": "Data Scientist",
+    "salaryType": "MONTHLY",
+    "desirable": "Passion for data-driven innovation",
+    "vacancies": 3
+  },
+  {
+    "title": "Frontend Developer",
+    "tags": [
+      "Engineering",
+      "Remote Work",
+      "JavaScript",
+      "React"
+    ],
+    "jobBenefits": [
+      "Flexible Hours",
+      "Stock Options",
+      "Life Insurance"
+    ],
+    "experience": "2-4 years",
+    "jobType": "REMOTE",
+    "jobLevel": "MID",
+    "education": "Bachelor's Degree in Computer Science",
+    "sharedAt": "2024-11-23T11:30:00",
+    "expiredAt": "2024-12-30T23:59:59",
+    "minSalary": 5000000,
+    "maxSalary": 10000000,
+    "description": "<p>As a <strong>Frontend Developer</strong>, you'll create dynamic user experiences using React and JavaScript. Collaborate with backend teams to deliver seamless functionality.</p>",
+    "country": "Indonesia",
+    "city": "Bandung",
+    "jobRole": "Frontend Developer",
+    "salaryType": "MONTHLY",
+    "desirable": "Eye for detail",
+    "vacancies": 1
+  },
+  {
+    "title": "DevOps Engineer",
+    "tags": [
+      "DevOps",
+      "AWS",
+      "Terraform",
+      "Cloud Computing"
+    ],
+    "jobBenefits": [
+      "Health Insurance",
+      "Paid Time Off",
+      "Parental Leave",
+      "Bonuses"
+    ],
+    "experience": "4-7 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "SENIOR",
+    "education": "Bachelor's Degree in Information Technology",
+    "sharedAt": "2024-11-24T12:00:00",
+    "expiredAt": "2025-01-15T23:59:59",
+    "minSalary": 9000000,
+    "maxSalary": 17000000,
+    "description": "<p>Looking for a <strong>DevOps Engineer</strong> to design and maintain infrastructure for scalable and secure systems. Proficiency in CI/CD pipelines and cloud technologies is a must.</p>",
+    "country": "Indonesia",
+    "city": "Surabaya",
+    "jobRole": "DevOps Engineer",
+    "salaryType": "MONTHLY",
+    "desirable": "Ability to automate processes",
+    "vacancies": 2
+  },
+  {
+    "title": "UX Designer",
+    "tags": [
+      "Design",
+      "Engineering",
+      "Product Management",
+      "Startup"
+    ],
+    "jobBenefits": [
+      "Team Building Activities",
+      "Education Reimbursement",
+      "Flexible Hours"
+    ],
+    "experience": "1-3 years",
+    "jobType": "PART_TIME",
+    "jobLevel": "JUNIOR",
+    "education": "Bachelor's Degree in Design or related field",
+    "sharedAt": "2024-11-25T15:00:00",
+    "expiredAt": "2025-01-05T23:59:59",
+    "minSalary": 4000000,
+    "maxSalary": 8000000,
+    "description": "<p>We're seeking a <strong>UX Designer</strong> to improve user interfaces and create intuitive digital experiences. Ideal for individuals passionate about user-centric designs.</p>",
+    "country": "Indonesia",
+    "city": "Denpasar",
+    "jobRole": "UX Designer",
+    "salaryType": "MONTHLY",
+    "desirable": "Creative mindset",
+    "vacancies": 1
+  },
+  {
+    "title": "Cybersecurity Analyst",
+    "tags": [
+      "Cybersecurity",
+      "Engineering",
+      "AI & Machine Learning",
+      "Remote Work"
+    ],
+    "jobBenefits": [
+      "Employee Assistance Program",
+      "Life Insurance",
+      "Retirement Plan",
+      "Remote Work"
+    ],
+    "experience": "3-5 years",
+    "jobType": "FULL_TIME",
+    "jobLevel": "MID",
+    "education": "Bachelor's Degree in Cybersecurity",
+    "sharedAt": "2024-11-26T16:30:00",
+    "expiredAt": "2025-01-20T23:59:59",
+    "minSalary": 7000000,
+    "maxSalary": 14000000,
+    "description": "<p>Protect our systems and networks as a <strong>Cybersecurity Analyst</strong>. You'll monitor for threats, improve defenses, and ensure compliance with security standards.</p>",
+    "country": "Indonesia",
+    "city": "Yogyakarta",
+    "jobRole": "Cybersecurity Analyst",
+    "salaryType": "MONTHLY",
+    "desirable": "Strong analytical skills",
+    "vacancies": 2
+  }
+]
+

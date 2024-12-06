@@ -1,36 +1,27 @@
-import { SECURED_URL } from "@/constant";
-import { JobInterface } from "@/lib/interface";
+import { CommonResponse, JobInterface } from "@/lib/interface";
 import { JobValeus } from "@/lib/validation";
-import { fetchBaseQuery } from "@reduxjs/toolkit/query";
-import { createApi } from "@reduxjs/toolkit/query/react";
+import { apiSlice } from "./apiSlice";
 
-interface JobResponse {
-  status: number;
-  message: string;
-  data: JobInterface[];
-}
-
-export const jobApi = createApi({
-  reducerPath: "jobApi",
-  tagTypes: ["jobs"],
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${SECURED_URL}`,
-    credentials: "include",
-  }),
+export const jobApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getJobById: builder.query<JobResponse, string>({
+    getJobById: builder.query<CommonResponse<JobInterface>, string>({
       query: (id: string | undefined) => ({
-        url: `/job/${id}`,
+        url: `/secured/job/${id}`,
         method: "GET",
       }),
+      providesTags: ["Job", "User", "Cv"],
     }),
-    getJob: builder.query<JobResponse, void>({
-      query: () => "/job",
-      providesTags: ["jobs"],
+    getJob: builder.query<CommonResponse<JobInterface[]>, void>({
+      query: () => "/secured/job",
+      providesTags: ["Job", "User", "Cv"],
     }),
-    addJob: builder.mutation<JobResponse, JobValeus>({
+    getJobByUser: builder.query<CommonResponse<JobInterface[]>, void>({
+      query: () => "/secured/job/user",
+      providesTags: ["Job", "User", "Cv"],
+    }),
+    addJob: builder.mutation<CommonResponse<JobInterface>, JobValeus>({
       query: (data: JobValeus) => ({
-        url: "/job",
+        url: "/secured/job",
         method: "POST",
         body: data,
       }),
@@ -38,4 +29,9 @@ export const jobApi = createApi({
   }),
 });
 
-export const { useGetJobQuery, useGetJobByIdQuery, useAddJobMutation } = jobApi;
+export const {
+  useGetJobQuery,
+  useGetJobByIdQuery,
+  useGetJobByUserQuery,
+  useAddJobMutation,
+} = jobApi;

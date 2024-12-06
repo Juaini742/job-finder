@@ -1,6 +1,5 @@
 package com.core.job_finder.jobs.job;
 
-
 import com.core.job_finder.auth.AuthService;
 import com.core.job_finder.jobs.job_benefits.JobBenefit;
 import com.core.job_finder.jobs.job_benefits.JobBenefitRepository;
@@ -21,13 +20,21 @@ public class JobService {
     private final TagRepository tagRepository;
     private final JobBenefitRepository jobBenefitRepository;
 
-    public JobResponse findJobById(String id){
-        Job job = jobRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Job not found"));
-        return toJobResponse(job);
+    public List<JobCompleteResponse> findAllJob() {
+        List<Job> jobs = jobRepository.findAll();
+        if (jobs.isEmpty()) {
+            return List.of();
+        }
+        return jobs.stream().map(JobCompleteResponse::toJobCompleteResponse).toList();
     }
 
-    public List<JobResponse> findAllJobByUserId() {
+    public JobCompleteResponse findJobById(String id) {
+        Job job = jobRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Job not found"));
+        return JobCompleteResponse.toJobCompleteResponse(job);
+    }
+
+    public List<JobCompleteResponse> findAllJobByUserId() {
         User user = authService.getCurrentUser();
         List<Job> jobs = jobRepository.findAllByRecruiterId(user.getId());
 
@@ -35,10 +42,10 @@ public class JobService {
             return List.of();
         }
 
-        return jobs.stream().map(this::toJobResponse).toList();
+        return jobs.stream().map(JobCompleteResponse::toJobCompleteResponse).toList();
     }
 
-    public JobResponse createJob(JobRequestDTO jobRequestDTO) {
+    public JobCompleteResponse createJob(JobRequestDTO jobRequestDTO) {
         User user = authService.getCurrentUser();
 
         if (user.getCompany() == null) {
@@ -84,31 +91,7 @@ public class JobService {
 
         jobRepository.save(job);
 
-        return toJobResponse(job);
-    }
-
-    public JobResponse toJobResponse(Job job) {
-        return new JobResponse(
-                job.getId(),
-                job.getTitle(),
-                job.getDescription(),
-                job.getDesirable(),
-                job.getCountry(),
-                job.getCity(),
-                job.getMinSalary(),
-                job.getMaxSalary(),
-                job.getSalaryType().name(),
-                job.getExperience(),
-                job.getJobType().name(),
-                job.getJobRole(),
-                job.getLevel().name(),
-                job.getEducation(),
-                job.getSharedAt(),
-                job.getExpiredAt(),
-                job.getVacancies(),
-                job.getTags().stream().map(Tag::getName).toList(),
-                job.getJobBenefits().stream().map(JobBenefit::getName).toList()
-        );
+        return JobCompleteResponse.toJobCompleteResponse(job);
     }
 
 

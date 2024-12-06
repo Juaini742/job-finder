@@ -25,3 +25,7 @@ export default function RootLayout({
     </html>
   );
 }
+
+// Annotation Type JsonProperty
+// "@JsonProperty adalah anotasi yang digunakan untuk menentukan nama properti JSON yang akan dipetakan ke suatu field, method, atau parameter dalam Java.
+// com.fasterxml.jackson.annotation"

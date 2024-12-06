@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
-@Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CvRequestDTO {

@@ -30,30 +30,30 @@ public class Cv extends BaseEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @Column(name = "full_name", nullable = false)
+    @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "birth_day", nullable = false)
+    @Column(name = "birth_day")
     private Timestamp birthDay;
 
-    @Column(name = "nationality", nullable = false)
+    @Column(name = "nationality")
     private String nationality;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "marital_status", nullable = false)
+    @Column(name = "marital_status")
     private MaritalStatus maritalStatus;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender", nullable = false)
+    @Column(name = "gender")
     private Gender gender;
 
-    @Column(name = "address")
+    @Column(name = "address", columnDefinition = "text")
     private String address;
 
-    @Column(name = "summary")
+    @Column(name = "summary", columnDefinition = "text")
     private String summary;
 
-    @Column(name = "cover_letter")
+    @Column(name = "cover_letter", columnDefinition = "text")
     private String coverLetter;
 
     @Column(name = "profile_picture_url")
@@ -107,7 +107,7 @@ public class Cv extends BaseEntity {
         FEMALE,
         PREFER_NOT_TO_SAY;
 
-        public Gender fromString(String value) {
+        public static Gender fromString(String value) {
             for (Gender gender : Gender.values()) {
                 if (gender.name().equalsIgnoreCase(value)) {
                     return gender;

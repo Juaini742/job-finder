@@ -87,31 +87,7 @@ public class CompanyService {
                     .build();
             socialMediaCompanyRepository.save(socialMediaCompany);
         }
-        return toCompanyResponse(company);
+        return CompanyResponse.toCompanyResponse(company);
     }
 
-
-    public CompanyResponse toCompanyResponse(Company company) {
-        return new CompanyResponse(
-                company.getId(),
-                company.getName(),
-                company.getDescription(),
-                company.getLocation(),
-                company.getIndustry(),
-                company.getLogoUrl(),
-                company.getFoundedIn(),
-                company.getOrganizationType(),
-                company.getTeamSize(),
-                company.getWebsiteUrl(),
-                company.getPhone(),
-                company.getEmail(),
-                company.getSocialMediaCompanies().stream()
-                        .map(socialMediaCompany -> new SocialMediaCompanyResponse(
-                                socialMediaCompany.getId(),
-                                socialMediaCompany.getSocialMedia().getName(),
-                                socialMediaCompany.getUrl()
-                        ))
-                        .toList()
-        );
-    }
 }

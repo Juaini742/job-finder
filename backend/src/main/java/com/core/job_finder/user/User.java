@@ -1,8 +1,10 @@
 package com.core.job_finder.user;
 
+import com.core.job_finder.application.Application;
 import com.core.job_finder.base_enrity.BaseEntity;
 import com.core.job_finder.companies.company.Company;
 import com.core.job_finder.cv.Cv;
+import com.core.job_finder.jobs.job.Job;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
@@ -41,6 +44,13 @@ public class User extends BaseEntity implements UserDetails {
     @JsonIgnore
     private Cv cv;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Application> application;
+
+    @OneToMany(mappedBy = "recruiter", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Job> jobs;
 
     @Enumerated(EnumType.STRING)
     private Role_User role;

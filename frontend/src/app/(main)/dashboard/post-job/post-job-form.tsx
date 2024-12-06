@@ -563,10 +563,6 @@ export default function PostJoForm() {
             </div>
           </div>
 
-          {/* <Button>
-            Post Job
-            <ChevronsRight />
-          </Button> */}
           <ButtonWithLoading label="Post Job" isLoading={isLoading} />
         </form>
       </Form>

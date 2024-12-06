@@ -1,0 +1,84 @@
+{
+  "fullName": "Saleh JOB_SEEKER",
+  "birthDay": "1990-01-01",
+  "nationality": "American",
+  "maritalStatus": "SINGLE",
+  "gender": "MALE",
+  "address": "123 Main Street, New York",
+  "summary": "A highly skilled software developer with 10+ years of experience in building scalable, high-performance applications.",
+  "coverLetter": "I am excited to apply for this role because of my passion for developing impactful software solutions...",
+  "skills": [
+    {
+      "category": "Programming",
+      "items": ["Java", "Python", "JavaScript", "C++"]
+    },
+    {
+      "category": "Frameworks",
+      "items": ["Spring Boot", "React", "Django", "Angular"]
+    },
+    {
+      "category": "Tools",
+      "items": ["Git", "Docker", "Jenkins", "Kubernetes", "Postman"]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tech Corp",
+      "position": "Senior Developer",
+      "startDate": "2015-06-01",
+      "endDate": "2020-08-31",
+      "description": "Developed scalable web applications using Spring Boot and React. Optimized system performance, improving response time by 35%."
+    },
+    {
+      "company": "Innovatech",
+      "position": "Team Lead",
+      "startDate": "2020-09-01",
+      "endDate": "2023-12-01",
+      "description": "Led a team of 10 developers to deliver cutting-edge AI solutions. Oversaw projects resulting in a 25% increase in client retention."
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science",
+      "university": "University of Indonesia",
+      "startDate": "2008-09-01",
+      "endDate": "2012-06-30"
+    },
+    {
+      "degree": "Master of Software Engineering",
+      "university": "Stanford University",
+      "startDate": "2013-09-01",
+      "endDate": "2015-06-30"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Indonesian",
+      "proficiency": "Native"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Certified Java Developer",
+      "score": "90%",
+      "year": 2018
+    },
+    {
+      "name": "AWS Certified Solutions Architect",
+      "score": "85%",
+      "year": 2020
+    },
+    {
+      "name": "Google Professional Cloud Architect",
+      "score": "88%",
+      "year": 2022
+    }
+  ],
+  "profilePictureUrl": "https://example.com/profile.jpg",
+  "resumeUrl": "https://example.com/resume.pdf",
+  "websiteUrl": "https://johndoe.com"
+}

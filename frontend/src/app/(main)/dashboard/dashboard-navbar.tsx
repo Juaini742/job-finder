@@ -31,7 +31,7 @@ export default function DashboardNavbar() {
 
   return (
     <nav
-      className={`sticky top-4 h-[calc(90vh-30px)] ${
+      className={`sticky top-10 h-full ${
         isMinimized ? "w-16" : "w-44 min-w-44"
       } transition-all duration-300 flex flex-col justify-between`}
     >
@@ -82,7 +82,7 @@ export default function DashboardNavbar() {
       {/* Sidebar Footer */}
       <div className="px-4 py-4">
         {!isMinimized && (
-          <p className="text-sm text-gray-400">© 2024 YourApp</p>
+          <p className="text-sm text-gray-400">© 2024 JobIlot</p>
         )}
       </div>
     </nav>

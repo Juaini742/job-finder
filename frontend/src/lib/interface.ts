@@ -1,9 +1,23 @@
+export interface CommonResponse<T> {
+  message: string;
+  status: number;
+  data: T;
+}
+
 export interface UserInterface {
   id: string;
   fullName: string;
   email: string;
   role: string;
   company: CompanyInterface | null;
+  application:
+    | {
+        id: string;
+        jobId: string;
+        cvId: string;
+        status: string;
+      }[]
+    | null;
 }
 
 export interface CompanyInterface {
@@ -19,6 +33,26 @@ export interface CompanyInterface {
   websiteUrl: string;
   phone: string;
   email: string;
+}
+
+export interface ApplicationWithCompanyInterface {
+  id: string;
+  userId: string;
+  jobId: string;
+  status: string;
+  createdAt: string;
+  job: JobInterface;
+  company: CompanyInterface;
+}
+
+export interface ApplicationInterface {
+  id: string;
+  userId: string;
+  jobId: string;
+  status: string;
+  createdAt: string;
+  cv: CvInterface;
+  company: CompanyInterface | null;
 }
 
 export interface JobInterface {
@@ -40,24 +74,19 @@ export interface JobInterface {
   vacencies: string;
   tags: string[];
   jobBenefits: string[];
+  applications: ApplicationInterface[] | null;
 }
 
+// CV
 interface Certification {
   name: string;
-  year: number;
-  score: string | number;
-}
-
-interface LanguageCertification {
-  name: string;
-  year: number;
-  score: number;
+  year: string;
+  score: string;
 }
 
 interface Language {
   name: string;
   proficiency: string;
-  certifications?: LanguageCertification[];
 }
 
 interface Education {
@@ -98,4 +127,17 @@ export interface CvInterface {
   education: Education[];
   languages: Language[];
   certifications: Certification[];
+}
+
+// Application
+export interface RequestApplication {
+  cvId: string | undefined;
+  jobId: string | undefined;
+}
+
+export interface ApplicationInterface {
+  id: string;
+  jobId: string;
+  status: string;
+  cv: CvInterface;
 }

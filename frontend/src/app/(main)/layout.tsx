@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./_layout/Navbar";
 import Header from "./_layout/Header";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import Footer from "./footer";
 
 export default function MainLayout({
   children,
@@ -9,12 +9,16 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ScrollArea className="h-screen">
+    <div>
+      {/* Navbar */}
       <Navbar />
-      <main>
+      {/* Main Content */}
+      <main className="mt-14 h-full flex-1">
         <Header />
         <div className="container">{children}</div>
       </main>
-    </ScrollArea>
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 }

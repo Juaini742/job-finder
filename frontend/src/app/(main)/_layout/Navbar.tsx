@@ -13,8 +13,14 @@ const navBars = [
   {
     title: "Find Job",
     path: "/job",
-    role: "",
+    role: "JOB_SEEKER",
   },
+  {
+    title: "Find Employers",
+    path: "/find-employee",
+    role: "JOB_SEEKER",
+  },
+
   {
     title: "Find Candidate",
     path: "/candidate",
@@ -26,9 +32,14 @@ const navBars = [
     role: "RECRUITER",
   },
   {
-    title: "Recruiter",
-    path: "/RECRUITER",
-    role: "",
+    title: "Dashboard",
+    path: "/job-seeker/dashboard",
+    role: "JOB_SEEKER",
+  },
+  {
+    title: "Job Alerts",
+    path: "/alert",
+    role: "JOB_SEEKER",
   },
   {
     title: "My Jobs",
@@ -45,7 +56,7 @@ export default function Navbar() {
   console.log(data);
 
   return (
-    <nav className="w-full h-12 flex items-end bg-gray-50">
+    <nav className="w-full h-14 flex items-end bg-gray-50 fixed top-0 z-50">
       <div className="container flex justify-between items-center">
         <ul className="flex gap-5">
           {navBars
@@ -59,7 +70,7 @@ export default function Navbar() {
                   key={index}
                   className={`${
                     isActive
-                      ? "border-b-2 border-primary text-primary pb-2"
+                      ? "border-b-2 border-primary text-primary pb-3"
                       : "text-gray-700"
                   } hover:text-primary`}
                 >

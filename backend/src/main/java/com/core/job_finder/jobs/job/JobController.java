@@ -18,21 +18,27 @@ public class JobController {
 
     private final JobService jobService;
 
+    @GetMapping
+    public ResponseEntity<?> getAllJobs() {
+        List<JobCompleteResponse> jobs = jobService.findAllJob();
+        return GlobalResponse.buildResponse(HttpStatus.OK, "Jobs fetched successfully", jobs);
+    }
+
     @GetMapping("{id}")
     public ResponseEntity<?> getJobById(@PathVariable String id) {
-        JobResponse job = jobService.findJobById(id);
+        JobCompleteResponse job = jobService.findJobById(id);
         return GlobalResponse.buildResponse(HttpStatus.OK, "Jobs fetched successfully", job);
     }
 
-    @GetMapping
-    public ResponseEntity<?> getAllJobs() {
-        List<JobResponse> jobs = jobService.findAllJobByUserId();
+    @GetMapping("/user")
+    public ResponseEntity<?> getAllJobsByUserId() {
+        List<JobCompleteResponse> jobs = jobService.findAllJobByUserId();
         return GlobalResponse.buildResponse(HttpStatus.OK, "Jobs fetched successfully", jobs);
     }
 
     @PostMapping
     public ResponseEntity<?> createJob(@RequestBody JobRequestDTO jobRequestDTO) {
-        JobResponse job =  jobService.createJob(jobRequestDTO);
+        JobCompleteResponse job = jobService.createJob(jobRequestDTO);
         return GlobalResponse.buildResponse(HttpStatus.CREATED, "Job created successfully", job);
     }
 }

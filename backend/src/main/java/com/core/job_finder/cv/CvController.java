@@ -29,4 +29,10 @@ public class CvController {
         return GlobalResponse.buildResponse(HttpStatus.OK, "Cv created successfully", cv);
     }
 
+    @PutMapping
+    public ResponseEntity<?> updateCv(@Valid @RequestBody CvRequestDTO cvRequestDTO) {
+        CvResponse cv = cvService.updateCv(cvRequestDTO);
+        return GlobalResponse.buildResponse(HttpStatus.OK, "Cv updated successfully", cv);
+    }
+
 }

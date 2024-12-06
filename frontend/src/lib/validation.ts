@@ -85,3 +85,110 @@ export const CompanySchema = z.object({
 });
 
 export type CompanyValues = z.infer<typeof CompanySchema>;
+
+const ExperienceSchema = z.object({
+  company: z.string().min(1, "Company name is required"),
+  position: z.string().min(1, "Position is required"),
+  startDate: z.string().refine((date) => !isNaN(Date.parse(date)), {
+    message: "Invalid start date",
+  }),
+  endDate: z.string().refine((date) => !isNaN(Date.parse(date)), {
+    message: "Invalid end date",
+  }),
+  description: z.string().min(1, "Description is required"),
+});
+
+const EducationSchema = z.object({
+  degree: requiredString,
+  university: requiredString,
+  startDate: z.string().refine((date) => !isNaN(Date.parse(date)), {
+    message: "Invalid start date",
+  }),
+  endDate: z.string().refine((date) => !isNaN(Date.parse(date)), {
+    message: "Invalid end date",
+  }),
+});
+
+const CertificationSchema = z.object({
+  name: requiredString,
+  institutation: requiredString,
+  score: requiredString,
+  year: requiredString,
+});
+
+const HoobySchema = z.object({
+  name: requiredString,
+  description: requiredString,
+});
+
+const LanguageSchema = z.object({
+  name: requiredString,
+  proficiency: requiredString,
+});
+
+export const CvSchema = z.object({
+  fullName: z
+    .string({ required_error: "Full name is required." })
+    .max(255, "Full name cannot exceed 255 characters.")
+    .min(1, "Full name is required"),
+
+  birthDay: z.date().refine((data) => data < new Date(), {
+    message: "Birth day must be in the past",
+  }),
+
+  nationality: z
+    .string({ required_error: "Nationality is required." })
+    .max(255, "Nationality cannot exceed 255 characters.")
+    .min(1, "Full name is required"),
+
+  maritalStatus: z
+    .string({ required_error: "Marital status is required." })
+    .min(1, "Full name is required"),
+
+  gender: z
+    .string({ required_error: "Gender is required." })
+    .min(1, "Full name is required"),
+
+  address: z
+    .string({ required_error: "Address is required." })
+    .max(1000, "Address cannot exceed 1000 characters.")
+    .min(1, "Full name is required"),
+
+  summary: z
+    .string({ required_error: "Summary is required." })
+    .max(2000, "Summary cannot exceed 2000 characters.")
+    .min(1, "Full name is required"),
+
+  coverLetter: z
+    .string({ required_error: "Cover letter is required." })
+    .max(5000, "Cover letter cannot exceed 5000 characters.")
+    .min(1, "Full name is required"),
+
+  profilePictureUrl: z
+    .string()
+    .max(255, "Profile picture URL cannot exceed 255 characters.")
+    .optional(),
+
+  resumeUrl: z
+    .string()
+    .max(2000, "Resume URL cannot exceed 2000 characters.")
+    .optional(),
+
+  websiteUrl: z
+    .string()
+    .max(2000, "Website URL cannot exceed 2000 characters.")
+    .optional(),
+
+  skills: z.array(z.record(z.string(), z.any())),
+  experience: z.array(ExperienceSchema),
+
+  education: z.array(EducationSchema),
+
+  certifications: z.array(CertificationSchema).optional(),
+
+  hobbies: z.array(HoobySchema).optional(),
+
+  languages: z.array(LanguageSchema).optional(),
+});
+
+export type CvValues = z.infer<typeof CvSchema>;

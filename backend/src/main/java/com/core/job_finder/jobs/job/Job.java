@@ -1,10 +1,12 @@
 package com.core.job_finder.jobs.job;
 
+import com.core.job_finder.application.Application;
 import com.core.job_finder.base_enrity.BaseEntity;
 import com.core.job_finder.companies.company.Company;
 import com.core.job_finder.jobs.job_benefits.JobBenefit;
 import com.core.job_finder.jobs.tag.Tag;
 import com.core.job_finder.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -98,6 +100,10 @@ public class Job extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "company_id", referencedColumnName = "id", nullable = false)
     private Company company;
+
+    @OneToMany(mappedBy = "job")
+    @JsonBackReference
+    private List<Application> applications;
 
     public enum Job_Type {
         FULL_TIME,
